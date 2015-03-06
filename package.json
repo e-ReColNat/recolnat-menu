@@ -1,0 +1,29 @@
+{
+  "name": "recolnat-menu",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+  },
+  "author": "Thomas « Amleth » Bottini",
+  "license": "ISC",
+  "devDependencies": {
+    "jsx-loader": "git://github.com/petehunt/jsx-loader.git#master",
+    "style-loader": "git://github.com/webpack/style-loader.git#master",
+    "css-loader": "git://github.com/webpack/css-loader.git#master",
+    "url-loader": "git://github.com/webpack/url-loader.git#master",
+    "babel-loader": "git://github.com/babel/babel-loader.git#master",
+    "babel-runtime": "^4.0.2",
+    "core-js": "^0.5.4",
+    "lodash": "^3.2.0",
+    "normalize.css": "git://github.com/necolas/normalize.css.git#master",
+    "react": "git://github.com/facebook/react.git#master",
+    "react-lorem-component": "git://github.com/martinandert/react-lorem-component.git#master",
+    "react-router": "git://github.com/rackt/react-router.git#master",
+    "recolnat-style-guide": "git://github.com/Amleth/recolnat-style-guide.git#master"
+  },
+  "dependencies": {
+  }
+}
