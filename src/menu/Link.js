@@ -5,19 +5,14 @@ import React from 'react';
 //
 
 var buttonDefault = {
-//    borderRadius: '28px',
     fontFamily: '"Trebuchet MS", sans-serif',
-    color: '#ffffff',
-    fontSize: '17px',
     padding: '2px 4px 2px 4px',
     width: '150px',
     textDecoration: 'none',
-    whiteSpace: 'normal'
-};
-
-var buttonHover = {
-    background: '#504A4A',
-    textDecoration: 'none'
+    whiteSpace: 'normal',
+    verticalAlign: 'middle',
+    display: 'block',
+    fontSize: '17px'
 };
 
 //
@@ -42,6 +37,7 @@ var Button = React.createClass({
     render: function() {
         buttonDefault.height = this.props.height;
         buttonDefault.background = this.state.hover ? '#504A4A' : '#D0CCCB';
+        buttonDefault.color = this.state.hover ? '#ffffff' : '#000000';
         return (
             <span>
                 <input type='button' href={this.props.url} style={buttonDefault} value={this.props.label}

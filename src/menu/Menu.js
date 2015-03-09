@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Button from './Link';
+import recolnatLogoUrl from './recolnat-logo.png';
 
 //
 // STYLES
@@ -35,25 +36,13 @@ var linkItemStyle = Object.assign(fullWH, {
   textAlign: 'center',
   overflow: 'hidden'
 });
-/*
-var linkStyle = {
-  display: 'block',
-  textTransform: 'uppercase',
-  textDecoration: 'none',
-  fontSize: '111%',
-  verticalAlign: 'middle'
-};
-*/
+
 //
 // COMP
-// <a href={rm.url} style={linkStyle}>{rm.label}</a>
-var recolnatLogoUrl = require('./recolnat-logo.png');
 
 var Comp = React.createClass({
   render: function() {
     compStyle.height = this.props.menuHeight;
-//    linkStyle.height = this.props.menuHeight;
-//    linkStyle.lineHeight = this.props.menuHeight + 'px';
     return (
       <nav style={compStyle}>
         <ul style={linksListStyle}>
