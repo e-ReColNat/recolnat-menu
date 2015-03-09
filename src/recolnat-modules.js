@@ -16,5 +16,9 @@ module.exports = [
   {
     'label': 'Les visites virtuelles',
     'url': 'http://visitesvirtuelles.recolnat.org'
+  },
+  {
+    'label': 'Contrôle Qualité',
+    'url': 'http://www.perdu.com/'
   }
 ];
