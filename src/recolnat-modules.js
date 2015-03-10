@@ -3,7 +3,11 @@
 module.exports = [
   {
     'label': 'Homepage',
-    'url': 'http://www.recolnat.org'
+    'url': '#'
+  },
+  {
+    'label': 'Le Contrôle Qualité',
+    'url': '#'
   },
   {
     'label': 'Les Herbonautes',
@@ -11,14 +15,10 @@ module.exports = [
   },
   {
     'label': 'Le Collaboratoire',
-    'url': 'http://collaboratoire.recolnat.org'
+    'url': '#'
   },
   {
-    'label': 'Les visites virtuelles',
-    'url': 'http://visitesvirtuelles.recolnat.org'
-  },
-  {
-    'label': 'Contrôle Qualité',
-    'url': 'http://www.perdu.com/'
+    'label': 'Les Visites Virtuelles',
+    'url': '#'
   }
 ];
