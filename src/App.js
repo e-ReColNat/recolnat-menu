@@ -6,9 +6,9 @@ import Lorem from  'react-lorem-component';
 import recolnatModules from './recolnat-modules';
 import './App.css';
 
-var menuHeight = 50;
+var menuHeight = 35;
 var siteStyle = {
-  marginTop: menuHeight + 15
+  marginTop: menuHeight + 5
 };
 
 var Comp = React.createClass({

@@ -2,23 +2,19 @@
 
 module.exports = [
   {
-    'label': 'Homepage',
+    'label': 'Accueil',
     'url': 'http://www.recolnat.org'
   },
   {
-    'label': 'Les Herbonautes',
+    'label': 'Contrôler',
     'url': 'http://lesherbonautes.mnhn.fr'
   },
   {
-    'label': 'Le Collaboratoire',
+    'label': 'Transcrire',
     'url': 'http://collaboratoire.recolnat.org'
   },
   {
-    'label': 'Les visites virtuelles',
+    'label': 'Visiter',
     'url': 'http://visitesvirtuelles.recolnat.org'
-  },
-  {
-    'label': 'Contrôle Qualité',
-    'url': 'http://www.perdu.com/'
   }
 ];

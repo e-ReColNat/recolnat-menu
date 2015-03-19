@@ -1,0 +1,31 @@
+.recolnatUpperNavigationBarNav {
+    position: fixed;
+    top: 0px;
+    /*border-bottom: 1px solid black;*/
+    background-color: #E8E8E6;
+    font-family: "Trebuchet MS", sans-serif;
+    width: 100%;
+    padding: 0px;
+    box-shadow: 5px 5px 5px #E8E8E6;
+    opacity: 0.6;
+}
+
+.recolnatUpperNavigationBarNav:hover {
+    opacity: 1;
+}
+
+.recolnatUpperNavigationBarLinkList {
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+    justify-content: center;
+}
+
+.recolnatUpperNavigationBarLinkListItem {
+    width: 150px;
+    height: 35px; /* Set bar height here */
+    display: inline;
+    text-align: center;
+    overflow: hidden;
+    paddingLeft: 10px;
+}
