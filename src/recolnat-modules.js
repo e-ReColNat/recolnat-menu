@@ -3,18 +3,22 @@
 module.exports = [
   {
     'label': 'Accueil',
-    'url': 'http://www.recolnat.org'
+    'url': 'http://wp5test.mnhn.fr/homepage-test'
   },
   {
     'label': 'Contrôler',
-    'url': 'http://lesherbonautes.mnhn.fr'
+    'url': '#'
   },
   {
     'label': 'Transcrire',
-    'url': 'http://collaboratoire.recolnat.org'
+    'url': 'http://lesherbonautes.mnhn.fr'
   },
   {
     'label': 'Visiter',
     'url': 'http://visitesvirtuelles.recolnat.org'
+  },
+  {
+    'label': 'Colaboratoire',
+    'url' : '#'
   }
 ];

@@ -1,6 +1,10 @@
 'use strict';
 
 import React from 'react';
+import rsg from 'recolnat-style-guide';
+const grey1 = rsg.colours.grisfonce;
+const grey2 = rsg.colours.grisclair1;
+const grey3 = rsg.colours.grisclair2;
 
 //
 // STYLES
