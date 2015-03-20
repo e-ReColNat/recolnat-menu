@@ -6,42 +6,41 @@ import rsg from 'recolnat-style-guide';
 const grey1 = rsg.colours.grisfonce;
 const grey2 = rsg.colours.grisclair1;
 const grey3 = rsg.colours.grisclair2;
-//
-// GLOBAL
-//
-var menuBarHeight = '35px';
 
 //
 // STYLES
 //
 
 import '../../node_modules/normalize.css/normalize.css';
-require('../styles/Menu.css');
+import '../styles/Menu.css';
 
-var recolnatUpperNavigationBarLinkListStyle = {
-    display: 'flex',
-    padding: '0px',
-    margin: '0px',
-    justifyContent: 'center'
+const barStyle = {
+  position: 'fixed',
+  top: 0,
+  backgroundColor: grey3,
+  fontFamily: '"Trebuchet MS", sans-serif',
+  width: '100%',
+  padding: 0,
+  boxShadow: '5px 5px 5px ' + grey3
 };
 
-var recolnatUpperNavigationBarLinkListItemStyle = {
-    width: '150px',
-    height: menuBarHeight,
-    display: 'inline',
-    textAlign: 'center',
-    overflow: 'hidden',
-    paddingLeft: '10px'
+const itemsStyle = {
+  display: 'flex',
+  padding: 0,
+  margin: 0,
+  justifyContent: 'center'
 };
 
-var recolnatUpperNavigationBarNavStyle = {
-    position: 'fixed',
-    top: '0px',
-    backgroundColor: grey3,
-    fontFamily: '"Trebuchet MS", sans-serif',
-    width: '100%',
-    padding: '0px',
-    boxShadow: '5px 5px 5px ' + grey3
+var itemStyle = {
+  width: 150,
+  display: 'inline',
+  textAlign: 'center',
+  overflow: 'hidden'
+};
+
+var logoStyle = {
+  paddingTop: 1,
+  paddingBottom: 1
 };
 
 //
@@ -50,21 +49,27 @@ var recolnatUpperNavigationBarNavStyle = {
 
 import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/recolnat_B_H40.png';
 
-var Comp = React.createClass({
+const Comp = React.createClass({
+  componentWillMount: function() {
+    itemStyle.height = this.props.menuHeight;
+    logoStyle.height = this.props.menuHeight - 2;
+  },
   render: function() {
     return (
-        <nav className='recolnatUpperNavigationBarNav' >
-            <span style={recolnatUpperNavigationBarNavStyle}>
-                <ul style={recolnatUpperNavigationBarLinkListStyle}>
-                    <li style={recolnatUpperNavigationBarLinkListItemStyle} ><img src={recolnatLogoUrl} height={this.props.menuHeight} /></li>
-        {this.props.recolnatModules.map(function(rm) {
-            return <li key={rm.url} style={recolnatUpperNavigationBarLinkListItemStyle}>
-                <Button url={rm.url} label={rm.label} />
-            </li>;
-        })}
-                </ul>
-            </span>
-        </nav>
+      <nav className='recolnatUpperNavigationBarNav' >
+        <span style={barStyle}>
+          <ul style={itemsStyle}>
+            <li style={itemStyle} >
+              <img src={recolnatLogoUrl} style={logoStyle}/>
+            </li>
+            {this.props.recolnatModules.map((rm) => {
+              return <li key={rm.url} style={itemStyle}>
+                <Button url={rm.url} label={rm.label} itemHeight={'30px'} />
+              </li>;
+            })}
+          </ul>
+        </span>
+      </nav>
     );
   }
 });

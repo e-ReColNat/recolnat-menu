@@ -3,20 +3,23 @@
 import React from  'react';
 import Menu from './menu/Menu';
 import Lorem from  'react-lorem-component';
-import recolnatModules from './recolnat-modules';
+import menuData from './menu-data';
+
 import './App.css';
 
-var menuHeight = 35;
-var siteStyle = {
-  marginTop: menuHeight + 5
-};
-
-var Comp = React.createClass({
+const Comp = React.createClass({
+  getDefaultProps: () => {
+    return {
+      siteStyle: {
+        marginTop: menuData.height + 10
+      }
+    };
+  },
   render: function() {
     return (
       <div>
-        <Menu recolnatModules={recolnatModules} menuHeight={menuHeight}/>
-        <Lorem id="content" style={siteStyle}/>
+        <Menu recolnatModules={menuData.modules} menuHeight={menuData.height}/>
+        <Lorem id="content" style={this.props.siteStyle}/>
       </div>
     );
   }
