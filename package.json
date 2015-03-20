@@ -22,7 +22,7 @@
     "react": "git://github.com/facebook/react.git#master",
     "react-lorem-component": "git://github.com/martinandert/react-lorem-component.git#master",
     "react-router": "git://github.com/rackt/react-router.git#master",
-    "recolnat-style-guide": "git://github.com/Amleth/recolnat-style-guide.git#master"
+    "recolnat-style-guide": "git+ssh://dicen-dev@217.70.188.184:/home/dicen-dev/git/recolnat-style-guide#master"
   },
   "dependencies": {
   }
