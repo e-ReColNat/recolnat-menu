@@ -15,7 +15,7 @@ require('../styles/Menu.css');
 // COMP
 //
 
-import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/recolnat_W_H40.png';
+import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/recolnat_B_H40.png';
 
 var Comp = React.createClass({
   render: function() {
