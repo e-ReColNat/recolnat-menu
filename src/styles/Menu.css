@@ -1,8 +1,13 @@
-.recolnatUpperNavigationBarNav{
-    opacity: 0.6;
+.recolnatGlobalNavigationMenu {
+  opacity: 0.5;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -ms-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.recolnatUpperNavigationBarNav:hover {
-    opacity: 1;
+.recolnatGlobalNavigationMenu:hover {
+  opacity: 1;
 }
 

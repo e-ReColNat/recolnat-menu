@@ -11,7 +11,7 @@ const Comp = React.createClass({
   getDefaultProps: () => {
     return {
       siteStyle: {
-        marginTop: menuData.height + 10
+        marginTop: menuData.height + 50
       }
     };
   },
@@ -19,7 +19,7 @@ const Comp = React.createClass({
     return (
       <div>
         <Menu recolnatModules={menuData.modules} menuHeight={menuData.height}/>
-        <Lorem id="content" style={this.props.siteStyle}/>
+        <Lorem id="content" style={this.props.siteStyle} count={69}/>
       </div>
     );
   }
