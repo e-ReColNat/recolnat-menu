@@ -5,8 +5,9 @@ import React from 'react';
 import Router from 'react-router';
 var {DefaultRoute, Route, Routes} = Router;
 
+import rootRoute from './root-route';
 var routes = (
-  <Route name="app" path="/" handler={App}>
+  <Route name="app" path={rootRoute} handler={App}>
     <DefaultRoute name="home" handler={App} />
   </Route>
 );

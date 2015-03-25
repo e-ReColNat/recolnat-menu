@@ -58,7 +58,6 @@ import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/reco
 const Comp = React.createClass({
   componentWillMount: function() {
     logoStyle.height = this.props.menuHeight - 2;
-    console.log(this.props.recolnatModules);
   },
   render: function() {
     return (
