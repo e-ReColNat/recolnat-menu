@@ -32,13 +32,6 @@ var linkStyle = {
 };
 
 //
-//var itemStyle = {
-//  width: 150,
-//  display: 'inline',
-//  textAlign: 'center',
-//  overflow: 'hidden'
-//};
-//
 // CODE
 //
 
