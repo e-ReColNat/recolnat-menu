@@ -2,79 +2,76 @@
 
 import React from 'react';
 import Link from './Link';
-import rsg from 'recolnat-style-guide';
 import _ from 'lodash';
+import rsg from 'recolnat-style-guide';
 const grey1 = rsg.colours.grisfonce;
 const grey2 = rsg.colours.grisclair1;
 const grey3 = rsg.colours.grisclair2;
 
-//
-// STYLES
-//
-
 import '../../node_modules/normalize.css/normalize.css';
-import '../styles/Menu.css';
-
-const barStyle = {
-  backgroundColor: grey3,
-  boxShadow: '5px 5px 5px ' + grey3,
-  fontFamily: '"Trebuchet MS", sans-serif',
-  paddingTop: 5, // to compensate the shadow
-  position: 'fixed',
-  top: 0,
-  width: '100%'
-};
-
-const itemListStyle = {
-  display: 'table',
-  margin: '0 auto',
-  padding: 0,
-  textAlign: 'center'
-};
-
-var itemStyle = {
-  display: 'table-cell',
-  overflow: 'hidden',
-  paddingLeft: 10,
-  paddingRight: 10,
-  textAlign: 'center',
-  verticalAlign: 'middle'
-};
-
-var logoStyle = {
-  paddingBottom: 1,
-  paddingTop: 1
-};
-
-var linkItemStyle = {};
-Object.assign(linkItemStyle, itemStyle, {});
-
-//
-// COMP
-//
-
 import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/recolnat_B_H40.png';
 
-const Comp = React.createClass({
-  componentWillMount: function() {
-    logoStyle.height = this.props.menuHeight - 2;
-  },
-  render: function() {
+class Comp extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.barStyle = {
+      backgroundColor: grey3,
+      fontFamily: '"Trebuchet MS", sans-serif',
+      position: 'fixed',
+      top: 0,
+      width: '100%'
+    };
+
+    this.itemListStyle = {
+      display: 'table',
+      margin: '0 auto',
+      padding: 0,
+      textAlign: 'center'
+    };
+
+    this.itemStyle = {
+      display: 'table-cell',
+      overflow: 'hidden',
+      paddingLeft: 7,
+      paddingRight: 7,
+      textAlign: 'center',
+      verticalAlign: 'middle'
+    };
+
+    this.logoStyle = {
+      marginTop: 2
+    };
+
+    this.logoLinkStyle = {
+      cursor: 'default'
+    };
+  }
+
+  componentWillMount() {
+    this.logoStyle.height = this.props.menuHeight - 5;
+    this.logoLinkStyle.height = this.props.menuHeight - 5;
+  }
+
+  render() {
     return (
-      <nav className='recolnatGlobalNavigationMenu' style={barStyle}>
-        <ul style={itemListStyle}>
-          <li style={itemStyle} >
-            <img src={recolnatLogoUrl} style={logoStyle}/>
+      <nav className='recolnatGlobalNavigationMenu' style={this.barStyle}>
+        <ul style={this.itemListStyle}>
+          <li style={this.itemStyle} >
+            <a href={this.props.projectUrl} target="_blank" style={this.logoLinkStyle}>
+              <img src={recolnatLogoUrl} style={this.logoStyle}/>
+            </a>
           </li>
-            {_.map(this.props.recolnatModules, (rm) => {
-              return <li key={rm.label} style={linkItemStyle}>
-                <Link url={rm.url} label={rm.label} symbol={rm.symbol} contextHeight={this.props.menuHeight}/>
-              </li>;
-            })}
+          {_.map(this.props.recolnatModules, (rm) => {
+            return <li key={rm.label} style={this.itemStyle}>
+              <Link url={rm.url} label={rm.label} symbol={rm.symbol} contextHeight={this.props.menuHeight}/>
+            </li>;
+          })}
         </ul>
       </nav>
     );
   }
-});
+}
 
 module.exports = Comp;
