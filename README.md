@@ -24,6 +24,7 @@ Les effets d'intégration visuelle supplémentaires (ombrage, transparance gén�
 
 ## Évolutions à discuter
 
+- La compatibilité sur tous les navigateurs n'a pas été pleinement testée (*pull requests* bienvenues ;-)).
 - Affichage du nom de l'utilisateur/trice connecté-e (+ lien vers sa page profil), et éventuellement d'une miniature de sa photo.
 - Affichage du nombre total d'utilisateurs inscrits.
 
