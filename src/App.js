@@ -2,7 +2,6 @@
 
 import React from  'react';
 import Menu from './menu/Menu';
-import Lorem from  'react-lorem-component';
 import menuData from './menu-data';
 
 import './App.css';
@@ -11,16 +10,20 @@ const Comp = React.createClass({
   getDefaultProps: () => {
     return {
       siteStyle: {
-        marginTop: menuData.height + 50
+        marginTop: menuData.height + 100,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: 500,
+        fontFamily: 'serif',
+        fontStyle: 'italic',
+        fontSize: '150%',
+        textAlign: 'justify'
       }
     };
   },
   render: function() {
     return (
-      <div>
-        <Menu recolnatModules={menuData.modules} menuHeight={menuData.height}/>
-        <Lorem id="content" style={this.props.siteStyle} count={69}/>
-      </div>
+      <Menu recolnatModules={menuData.modules} menuHeight={menuData.height} projectUrl={menuData.projectUrl}/>
     );
   }
 });
