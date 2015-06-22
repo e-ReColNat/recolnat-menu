@@ -35,6 +35,13 @@ class Comp extends React.Component {
     };
   }
 
+  displayTooltip(event) {
+    if(this.props.module.hover) {
+      event.preventDefault();
+      alert(this.props.module.hover);
+    }
+  }
+
   componentWillMount() {
     this.linkStyle.background = 'rgba(255, 255, 255, 0.5) url(' + this.props.symbol + ') no-repeat 5px';
     this.linkStyle.height = this.props.contextHeight;
@@ -47,9 +54,11 @@ class Comp extends React.Component {
     let s = {};
     Object.assign(s, this.linkStyle, {});
     if (this.props.label.length === 0) s.paddingRight = 0;
+    var self = this;
 
     return (
       <a className='recolnatGlobalNavigationMenuItemText'
+         onClick={this.displayTooltip.bind(this)}
         style={s}
         href={this.props.url}
         target="_blank"
