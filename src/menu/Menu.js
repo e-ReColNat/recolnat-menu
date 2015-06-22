@@ -65,7 +65,12 @@ class Comp extends React.Component {
           </li>
           {_.map(this.props.recolnatModules, (rm) => {
             return <li key={rm.label} style={this.itemStyle}>
-              <Link url={rm.url} label={rm.label} symbol={rm.symbol} contextHeight={this.props.menuHeight}/>
+              <Link
+                url={rm.url}
+                label={rm.label}
+                symbol={rm.symbol}
+                module={rm}
+                contextHeight={this.props.menuHeight}/>
             </li>;
           })}
         </ul>
