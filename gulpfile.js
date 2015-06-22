@@ -42,6 +42,6 @@ gulp.task('deploy', ['build-prod'], function() {
       host: 'wp5test.mnhn.fr',
       remotePath: '/home/cnamuser/www/menu',
       user: 'cnamuser',
-      pass: "glitteringprizes"
+      pass: ''
     }));
 });
