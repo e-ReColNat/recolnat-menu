@@ -61,7 +61,7 @@ class Comp extends React.Component {
          onClick={this.displayTooltip.bind(this)}
         style={s}
         href={this.props.url}
-        target="_self"
+        target="_top"
       >
         {this.props.label}
       </a>

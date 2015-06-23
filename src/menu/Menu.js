@@ -59,7 +59,7 @@ class Comp extends React.Component {
       <nav className='recolnatGlobalNavigationMenu' style={this.barStyle}>
         <ul style={this.itemListStyle}>
           <li style={this.itemStyle} >
-            <a href={this.props.projectUrl} target="_self" style={this.logoLinkStyle}>
+            <a href={this.props.projectUrl} target="_top" style={this.logoLinkStyle}>
               <img src={recolnatLogoUrl} style={this.logoStyle}/>
             </a>
           </li>
