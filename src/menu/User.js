@@ -49,10 +49,10 @@ class User extends React.Component {
 
   receiveMessage(event) {
     console.log("receiving message " + event +  " from " + event.origin);
-    // Test code chunk
+    // Test page code chunk
     if(event.origin == "http://wp5test.mnhn.fr") {
       console.log("Authorizing message from test server");
-      var message = JSON.parse(event).data;
+      var message = event.data;
       this.setState({username: message.username, userProfile: message.userProfileUrl});
       return;
     }

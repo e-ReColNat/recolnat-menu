@@ -20,11 +20,15 @@ Le menu est conforme à la charte graphique ReColNat (couleurs et fonte), que no
 
 Les effets d'intégration visuelle supplémentaires (ombrage, transparance générale du menu, etc.) sont laissés à discrétion de l'intégrateur.
 
+L'intégration avec le CAS se fait par l'application qui gère les sessions indépendemment du menu mais doit lui indiquer un ensemble de paramètres permettant de mettre à jour l'affichage du menu. Le bouton "Me Connecter" redirige le ticket de connexion vers l'application contenant le menu.
+
 ### Instructions
 L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la barre doit apparaitre :
 
 ```HTML
-<iframe class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5test.mnhn.fr/menu/"></iframe>
+<iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5test.mnhn.fr/menu/"></iframe>
+<script type="text/javascript">
+</script>
 ```
 
 La classe CSS recolnat-menu correspondant dans les feuilles de style :
@@ -39,9 +43,19 @@ La classe CSS recolnat-menu correspondant dans les feuilles de style :
 }
 ```
 
+Finalement le menu doit être informé de l'utilisateur connecté s'il y en a un, et de l'URL pour accéder à son profil. Cette action doit être faite après le chargement complete de la page en envoyant un message POST vers l'iframe contenant le menu. Ce message doit être de type "user" et doit contenir un username correspondant au nom affiché choisi par l'utilisateur et un userProfile qui est un URL vers la page profil utilisateur.
+```Javascript
+window.onload = function() {
+var frame = document.getElementById("recolnatMenu").contentWindow;
+frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://foo.bar.com/myProfile"}, "http://wp5test.mnhn.fr/menu/");
+}
+```
+
 ### Exemple
 
 Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.mnhn.fr/menu-test/](http://wp5test.mnhn.fr/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
+
+Une version avec le message POST après chargement est à [http://wp5test.mnhn.fr/menu-test-logged/](http://wp5test.mnhn.fr/menu-test-logged/). La source de la page montre un exemple de script JS dans le <head> de la page HTML.
 
 ## Évolutions à discuter
 
