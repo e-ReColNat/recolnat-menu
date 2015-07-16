@@ -33,6 +33,8 @@ class Comp extends React.Component {
       textTransform: 'uppercase',
       verticalAlign: 'middle'
     };
+
+    this.state = {active: false};
   }
 
   displayTooltip(event) {
@@ -49,6 +51,15 @@ class Comp extends React.Component {
     this.linkStyle.lineHeight = this.linkStyle.height + 'px';
   }
 
+  componentDidMount() {
+    var location = document.referrer;
+    console.log(document.referrer);
+    console.log(this.props.url);
+    if(location.indexOf(this.props.url) > -1) {
+      this.setState({active:true});
+    }
+  }
+
   render() {
 
     let s = {};
@@ -56,16 +67,32 @@ class Comp extends React.Component {
     if (this.props.label.length === 0) s.paddingRight = 0;
     var self = this;
 
-    return (
-      <a className='recolnatGlobalNavigationMenuItemText'
-         onClick={this.displayTooltip.bind(this)}
-        style={s}
-        href={this.props.url}
-        target="_top"
-      >
-        {this.props.label}
-      </a>
-    );
+    if(this.state.active) {
+      s.backgroundColor = grey2;
+      //s.color = grey3;
+      return (
+        <a className='recolnatGlobalNavigationMenuItemText'
+           onClick={this.displayTooltip.bind(this)}
+           style={s}
+           href={this.props.url}
+           target="_top"
+          >
+          {this.props.label}
+        </a>
+      );
+    }
+    else {
+      return (
+        <a className='recolnatGlobalNavigationMenuItemText'
+           onClick={this.displayTooltip.bind(this)}
+           style={s}
+           href={this.props.url}
+           target="_top"
+          >
+          {this.props.label}
+        </a>
+      );
+    }
   }
 }
 

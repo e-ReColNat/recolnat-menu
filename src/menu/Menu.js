@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Link from './Link';
+import User from './User';
 import _ from 'lodash';
 import rsg from 'recolnat-style-guide';
+
 const grey1 = rsg.colours.grisfonce;
 const grey2 = rsg.colours.grisclair1;
 const grey3 = rsg.colours.grisclair2;
@@ -47,6 +49,15 @@ class Comp extends React.Component {
     this.logoLinkStyle = {
       cursor: 'default'
     };
+
+    // Extract list of trusted domains from props
+    this.authorizedDomains = this.props.recolnatModules.map(function(mod) {
+      var callback = null;
+      if(mod.callback) {
+        callback = mod.callback;
+      }
+      return {url: mod.domain, callback: callback};
+    });
   }
 
   componentWillMount() {
@@ -73,6 +84,9 @@ class Comp extends React.Component {
                 contextHeight={this.props.menuHeight}/>
             </li>;
           })}
+          <li style={this.itemStyle}>
+            <User contextHeight={this.props.menuHeight} authorizedDomains={this.authorizedDomains}/>
+            </li>
         </ul>
       </nav>
     );

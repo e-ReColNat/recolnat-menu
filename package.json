@@ -27,6 +27,8 @@
     "react-router": "git://github.com/rackt/react-router.git#master",
     "recolnat-style-guide": "git+ssh://dicen-dev@217.70.188.184:/home/dicen-dev/git/recolnat-style-guide#master",
     "style-loader": "git://github.com/webpack/style-loader.git#master",
-    "url-loader": "git://github.com/webpack/url-loader.git#master"
+    "superagent": "^1.2.0",
+    "url-loader": "git://github.com/webpack/url-loader.git#master",
+    "urlparser": "^0.3.9"
   }
 }
