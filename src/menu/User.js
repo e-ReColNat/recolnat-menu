@@ -69,7 +69,6 @@ class User extends React.Component {
   }
 
   login() {
-    //window.location.href = 'https://cas.recolnat.fr/login?service=' + window.location.href;
     // Get callback props from menu data
     var callback = "";
     for(var i = 0; i < this.props.authorizedDomains.length; ++i) {
@@ -80,27 +79,6 @@ class User extends React.Component {
       }
     }
     top.window.location.replace('https://cas.recolnat.fr/login?service=' + top.window.location.href + callback);
-    //var casUrl = 'https://cas.recolnat.fr/login';
-    //request.post(casUrl)
-    //    .send({service: window.location.href})
-    //  //.send({callback: "client_name: Cas_Client"})
-    //.end((err, res) => {
-    //    if(err) {
-    //      console.log(err)
-    //    }
-    //    else {
-    //      console.log(res);
-    //      document.body = res.text;
-    //    }
-    //});
-    //request.post(casUrl)
-    //  .send({service: window.location.href})
-    //  .send({username: 'chlorofil'})
-    //  .send({password: 'passe'})
-    //  .send({rememberMe: true})
-    //.end((err, res) => {
-    //
-    //  })
   }
 
   render() {
