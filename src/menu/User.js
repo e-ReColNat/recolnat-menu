@@ -3,7 +3,6 @@
  */
 import React from 'react';
 import rsg from 'recolnat-style-guide';
-import request from 'superagent';
 import url from 'urlparser';
 const grey1 = rsg.colours.grisfonce;
 const grey2 = rsg.colours.grisclair1;
@@ -35,8 +34,6 @@ class User extends React.Component {
       textTransform: 'uppercase',
       verticalAlign: 'middle'
     };
-
-    this.state = {username: null, userProfile: null};
   }
 
   componentWillMount() {
@@ -44,67 +41,21 @@ class User extends React.Component {
     this.linkStyle.height = this.props.contextHeight;
     this.linkStyle.height = this.props.contextHeight - 2 * this.border - 6;
     this.linkStyle.lineHeight = this.linkStyle.height + 'px';
-    window.addEventListener("message", this.receiveMessage.bind(this), false);
-  }
-
-  receiveMessage(event) {
-    console.log("receiving message " + event +  " from " + event.origin);
-    // Test page code chunk
-    if(event.origin == "http://wp5test.mnhn.fr") {
-      console.log("Authorizing message from test server");
-      var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfileUrl});
-      return;
-    }
-    for(var i = 0; i < this.props.authorizedDomains.length; ++i) {
-      var domain = this.props.authorizedDomains[i].url;
-      if (domain.indexOf(event.origin) > -1) {
-        var message = JSON.parse(event.data);
-        if (message.type == "user") {
-          this.setState({username: message.username, userProfile: message.userProfileUrl});
-          return;
-        }
-      }
-    }
-  }
-
-  login() {
-    // Get callback props from menu data
-    var callback = "";
-    for(var i = 0; i < this.props.authorizedDomains.length; ++i) {
-      var domain = this.props.authorizedDomains[i].url;
-      if (document.referrer.indexOf(domain) > -1) {
-        callback = this.props.authorizedDomains[i].callback;
-        break;
-      }
-    }
-    top.window.location.replace('https://cas.recolnat.fr/login?service=' + top.window.location.href + callback);
   }
 
   render() {
     let s = {};
     Object.assign(s, this.linkStyle, {});
-    if (this.label.length === 0) s.paddingRight = 0;
+
     var self = this;
-    if(this.state.username) {
+
       return(
         <span className='recolnatGlobalNavigationMenuItemText'
               style={s}
-              >Bienvenue, {this.state.username}
+          >Bienvenue, {this.props.username}
         </span>
       );
-    }
-    else {
-      return (
-        <a className='recolnatGlobalNavigationMenuItemText'
-           onClick={this.login.bind(this)}
-           style={s}
-           target="_top"
-          >
-          Me connecter
-        </a>
-      );
-    }
+
   }
 }
 

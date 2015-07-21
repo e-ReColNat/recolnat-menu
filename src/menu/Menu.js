@@ -3,6 +3,8 @@
 import React from 'react';
 import Link from './Link';
 import User from './User';
+import Login from './Login';
+import Logout from './Logout';
 import _ from 'lodash';
 import rsg from 'recolnat-style-guide';
 
@@ -58,14 +60,55 @@ class Comp extends React.Component {
       }
       return {url: mod.domain, callback: callback};
     });
+
+    this.state = {username: null, userProfile: null};
   }
 
   componentWillMount() {
     this.logoStyle.height = this.props.menuHeight - 5;
     this.logoLinkStyle.height = this.props.menuHeight - 5;
+    window.addEventListener("message", this.receiveMessage.bind(this), false);
+  }
+
+  receiveMessage(event) {
+    console.log("receiving message " + event +  " from " + event.origin);
+    // Test page code chunk
+    if(event.origin == "http://wp5test.mnhn.fr") {
+      console.log("Authorizing message from test server");
+      var message = event.data;
+      this.setState({username: message.username, userProfile: message.userProfileUrl});
+      return;
+    }
+    for(var i = 0; i < this.props.authorizedDomains.length; ++i) {
+      var domain = this.props.authorizedDomains[i].url;
+      if (domain.indexOf(event.origin) > -1) {
+        var message = JSON.parse(event.data);
+        if (message.type == "user") {
+          this.setState({username: message.username, userProfile: message.userProfileUrl});
+          return;
+        }
+      }
+    }
   }
 
   render() {
+    var user;
+    var login;
+    var logout;
+    if(this.state.username == null) {
+      login =
+        <li style={this.itemStyle}>
+          <Login contextHeight={this.props.menuHeight} authorizedDomains={this.authorizedDomains}/>
+        </li>;
+    }
+    else {
+      user = <li style={this.itemStyle}>
+        <User contextHeight={this.props.menuHeight} username={this.state.username}/>
+      </li>;
+      logout = <li style={this.itemStyle}>
+        <Logout contextHeight={this.props.menuHeight}/>
+      </li>;
+    }
     return (
       <nav className='recolnatGlobalNavigationMenu' style={this.barStyle}>
         <ul style={this.itemListStyle}>
@@ -84,9 +127,9 @@ class Comp extends React.Component {
                 contextHeight={this.props.menuHeight}/>
             </li>;
           })}
-          <li style={this.itemStyle}>
-            <User contextHeight={this.props.menuHeight} authorizedDomains={this.authorizedDomains}/>
-            </li>
+          {login}
+          {user}
+          {logout}
         </ul>
       </nav>
     );
