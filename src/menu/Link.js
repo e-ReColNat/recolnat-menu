@@ -31,7 +31,8 @@ class Comp extends React.Component {
       textAlign: 'center',
       textDecoration: 'none',
       textTransform: 'uppercase',
-      verticalAlign: 'middle'
+      verticalAlign: 'middle',
+      overflow: 'hidden'
     };
 
     this.state = {active: false};

@@ -42,7 +42,7 @@ class Logout extends React.Component {
   }
 
   logout() {
-    top.window.location.replace('https://cas.recolnat.fr/logout');
+    top.window.location.replace('https://cas.recolnat.org/logout');
   }
 
   render() {

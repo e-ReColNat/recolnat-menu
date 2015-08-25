@@ -47,15 +47,15 @@ Finalement le menu doit être informé de l'utilisateur connecté s'il y en a un
 ```Javascript
 window.onload = function() {
 var frame = document.getElementById("recolnatMenu").contentWindow;
-frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://foo.bar.com/myProfile"}, "http://wp5test.mnhn.fr/menu/");
+frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://foo.bar.com/myProfile"}, "http://wp5test.recolnat.org/menu/");
 }
 ```
 
 ### Exemple
 
-Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.mnhn.fr/menu-test/](http://wp5test.mnhn.fr/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
+Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.recolnat.org/menu-test/](http://wp5test.recolnat.org/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
 
-Une version avec le message POST après chargement est à [http://wp5test.mnhn.fr/menu-test-logged/](http://wp5test.mnhn.fr/menu-test-logged/). La source de la page montre un exemple de script JS dans le <head> de la page HTML.
+Une version avec le message POST après chargement est à [http://wp5test.recolnat.org/menu-test-logged/](http://wp5test.recolnat.org/menu-test-logged/). La source de la page montre un exemple de script JS dans le <head> de la page HTML.
 
 ## Évolutions à discuter
 

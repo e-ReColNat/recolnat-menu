@@ -1,10 +1,12 @@
 'use strict';
 
 import React from 'react';
+import cookie from "react-cookie";
 import Link from './Link';
 import User from './User';
 import Login from './Login';
 import Logout from './Logout';
+import request from "superagent";
 import _ from 'lodash';
 import rsg from 'recolnat-style-guide';
 
@@ -67,13 +69,24 @@ class Comp extends React.Component {
   componentWillMount() {
     this.logoStyle.height = this.props.menuHeight - 5;
     this.logoLinkStyle.height = this.props.menuHeight - 5;
+    //this.checkLoginState();
     window.addEventListener("message", this.receiveMessage.bind(this), false);
   }
+
+  //checkLoginState() {
+  //  var cookie = cookie.load("CASTGC");
+  //  console.log(cookie);
+  //  if(!cookie) {
+  //    return;
+  //  }
+  //  // Call login service for user information
+  //
+  //}
 
   receiveMessage(event) {
     console.log("receiving message " + event +  " from " + event.origin);
     // Test page code chunk
-    if(event.origin == "http://wp5test.mnhn.fr") {
+    if(event.origin == "http://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
       var message = event.data;
       this.setState({username: message.username, userProfile: message.userProfileUrl});
