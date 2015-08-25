@@ -8,7 +8,7 @@ var rename = require('gulp-rename');
 //
 
 gulp.task('build-dev', ['route-root-dev'], shell.task([
-  'webpack-dev-server --devtool eval --progress --colors --content-base build --port 8081'
+  'webpack-dev-server --devtool eval --progress --colors --content-base build --port 8082'
 ]));
 
 gulp.task('route-root-dev', function() {
@@ -39,7 +39,7 @@ gulp.task('route-root-prod', function() {
 gulp.task('deploy', ['build-prod'], function() {
   gulp.src('dist/*')
     .pipe(sftp({
-      host: 'wp5test.mnhn.fr',
+      host: 'wp5test.recolnat.org',
       remotePath: '/home/cnamuser/www/menu',
       user: 'cnamuser',
       pass: ''

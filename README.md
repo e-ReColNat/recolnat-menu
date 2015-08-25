@@ -14,7 +14,7 @@ Ceci possède au moins deux avantages :
 - Intégrer le menu demande une modification minime du code (un élément HTML et une règle CSS), et aucune modification n'est nécessaire si le menu change (sauf bien entendu si son URL change).
 - Disposant de sa propre URL, le menu peut être vu comme une application à part entière, capable d'accéder à des données via un (futur) *backend* côté serveur.
 
-Le menu est déployé et disponible à l'URL : [http://wp5test.mnhn.fr/menu/](http://wp5test.mnhn.fr/menu/).
+Le menu est déployé et disponible à l'URL : [http://wp5test.recolnat.org/menu/](http://wp5test.recolnat.org/menu/).
 
 Le menu est conforme à la charte graphique ReColNat (couleurs et fonte), que nous proposons sour forme de [package NPM](https://github.com/Amleth/recolnat-style-guide). Les pictogrammes sont issus du site [Iconfinder](https://www.iconfinder.com/).
 
@@ -26,7 +26,7 @@ L'intégration avec le CAS se fait par l'application qui gère les sessions ind�
 L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la barre doit apparaitre :
 
 ```HTML
-<iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5test.mnhn.fr/menu/"></iframe>
+<iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5test.recolnat.org/menu/"></iframe>
 <script type="text/javascript">
 </script>
 ```
@@ -47,15 +47,15 @@ Finalement le menu doit être informé de l'utilisateur connecté s'il y en a un
 ```Javascript
 window.onload = function() {
 var frame = document.getElementById("recolnatMenu").contentWindow;
-frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://foo.bar.com/myProfile"}, "http://wp5test.mnhn.fr/menu/");
+frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://foo.bar.com/myProfile"}, "http://wp5test.recolnat.org/menu/");
 }
 ```
 
 ### Exemple
 
-Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.mnhn.fr/menu-test/](http://wp5test.mnhn.fr/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
+Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.recolnat.org/menu-test/](http://wp5test.recolnat.org/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
 
-Une version avec le message POST après chargement est à [http://wp5test.mnhn.fr/menu-test-logged/](http://wp5test.mnhn.fr/menu-test-logged/). La source de la page montre un exemple de script JS dans le <head> de la page HTML.
+Une version avec le message POST après chargement est à [http://wp5test.recolnat.org/menu-test-logged/](http://wp5test.recolnat.org/menu-test-logged/). La source de la page montre un exemple de script JS dans le <head> de la page HTML.
 
 ## Évolutions à discuter
 

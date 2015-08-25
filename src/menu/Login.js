@@ -54,7 +54,7 @@ class Login extends React.Component {
         break;
       }
     }
-    top.window.location.replace('https://cas.recolnat.fr/login?service=' + top.window.location.href + callback);
+    top.window.location.replace('https://cas.recolnat.org/login?service=' + top.window.location.href + callback);
   }
 
   render() {
