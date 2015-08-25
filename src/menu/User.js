@@ -43,6 +43,10 @@ class User extends React.Component {
     this.linkStyle.lineHeight = this.linkStyle.height + 'px';
   }
 
+  goToProfile() {
+    top.window.postMessage({type: "redirect", url: this.props.userProfile}, top.window.location.href);
+  }
+
   render() {
     let s = {};
     Object.assign(s, this.linkStyle, {});
@@ -52,6 +56,7 @@ class User extends React.Component {
       return(
         <span className='recolnatGlobalNavigationMenuItemText'
               style={s}
+              onClick={this.props.goToProfile.bind(this)}
           >Bienvenue, {this.props.username}
         </span>
       );

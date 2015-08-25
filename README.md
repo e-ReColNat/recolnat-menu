@@ -43,7 +43,7 @@ La classe CSS recolnat-menu correspondant dans les feuilles de style :
 }
 ```
 
-Finalement le menu doit être informé de l'utilisateur connecté s'il y en a un, et de l'URL pour accéder à son profil. Cette action doit être faite après le chargement complete de la page en envoyant un message POST vers l'iframe contenant le menu. Ce message doit être de type "user" et doit contenir un username correspondant au nom affiché choisi par l'utilisateur et un userProfile qui est un URL vers la page profil utilisateur.
+Le menu doit être informé de l'utilisateur connecté s'il y en a un, et de l'URL pour accéder à son profil. Cette action doit être faite après le chargement complete de la page en envoyant un message POST vers l'iframe contenant le menu. Ce message doit être de type "user" et doit contenir un username correspondant au nom affiché choisi par l'utilisateur et un userProfile qui est un URL vers la page profil utilisateur.
 ```Javascript
 window.onload = function() {
 var frame = document.getElementById("recolnatMenu").contentWindow;
@@ -51,6 +51,10 @@ frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://fo
 }
 ```
 
+Finalement, les pages accueillant la barre de menu doivent être capables de récéptionner les messages POST de demande de redirection de la part du menu (source: http://wp5test.recolnat.org). Ces messages se présentent sous la forme
+```Javascript
+{ type: "redirect", url: "URL"}
+```
 ### Exemple
 
 Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.recolnat.org/menu-test/](http://wp5test.recolnat.org/menu-test/). Révéler la source de la page permet de voir l'``iframe``.

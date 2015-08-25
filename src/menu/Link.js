@@ -54,8 +54,6 @@ class Comp extends React.Component {
 
   componentDidMount() {
     var location = document.referrer;
-    console.log(document.referrer);
-    console.log(this.props.url);
     if(location.indexOf(this.props.url) > -1) {
       this.setState({active:true});
     }

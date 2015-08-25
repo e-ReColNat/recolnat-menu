@@ -92,7 +92,7 @@ class Comp extends React.Component {
       this.setState({username: message.username, userProfile: message.userProfileUrl});
       return;
     }
-    for(var i = 0; i < this.props.authorizedDomains.length; ++i) {
+    for(var i = 0; i < this.authorizedDomains.length; ++i) {
       var domain = this.props.authorizedDomains[i].url;
       if (domain.indexOf(event.origin) > -1) {
         var message = JSON.parse(event.data);
@@ -116,7 +116,7 @@ class Comp extends React.Component {
     }
     else {
       user = <li style={this.itemStyle}>
-        <User contextHeight={this.props.menuHeight} username={this.state.username}/>
+        <User contextHeight={this.props.menuHeight} username={this.state.username} profile={this.state.userProfile}/>
       </li>;
       logout = <li style={this.itemStyle}>
         <Logout contextHeight={this.props.menuHeight}/>
