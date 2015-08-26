@@ -70,7 +70,11 @@ class Comp extends React.Component {
     this.logoStyle.height = this.props.menuHeight - 5;
     this.logoLinkStyle.height = this.props.menuHeight - 5;
     //this.checkLoginState();
-    window.addEventListener("message", this.receiveMessage.bind(this), false);
+  }
+
+  componentDidMount() {
+    var self = this;
+    window.addEventListener("message", self.receiveMessage.bind(self));
   }
 
   //checkLoginState() {
@@ -84,24 +88,32 @@ class Comp extends React.Component {
   //}
 
   receiveMessage(event) {
-    console.log("receiving message " + event +  " from " + event.origin);
+    //console.log("receiving message " + JSON.stringify(event) +  " from " + event.origin);
+    //console.log("auth=" + JSON.stringify(this.authorizedDomains));
     // Test page code chunk
+    if(event.origin.indexOf("localhost:") > -1) {
+      console.log("Authorizing message from localhost");
+      var message = event.data;
+      this.setState({username: message.username, userProfile: message.userProfile});
+      return;
+    }
     if(event.origin == "http://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
       var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfileUrl});
+      this.setState({username: message.username, userProfile: message.userProfile});
       return;
     }
     for(var i = 0; i < this.authorizedDomains.length; ++i) {
-      var domain = this.props.authorizedDomains[i].url;
+      var domain = this.authorizedDomains[i].url;
       if (domain.indexOf(event.origin) > -1) {
         var message = JSON.parse(event.data);
         if (message.type == "user") {
-          this.setState({username: message.username, userProfile: message.userProfileUrl});
+          this.setState({username: message.username, userProfile: message.userProfile});
           return;
         }
       }
     }
+    console.log("Origin " + event.origin + " is not authorized as POST message source for the menu bar");
   }
 
   render() {

@@ -56,7 +56,7 @@ class User extends React.Component {
       return(
         <span className='recolnatGlobalNavigationMenuItemText'
               style={s}
-              onClick={this.props.goToProfile.bind(this)}
+              onClick={this.goToProfile.bind(this)}
           >Bienvenue, {this.props.username}
         </span>
       );
