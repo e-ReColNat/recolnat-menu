@@ -105,8 +105,8 @@ class Comp extends React.Component {
     }
     for(var i = 0; i < this.authorizedDomains.length; ++i) {
       var domain = this.authorizedDomains[i].url;
-      if (domain.indexOf(event.origin) > -1) {
-        var message = JSON.parse(event.data);
+      if (event.origin.indexOf(domain) > -1) {
+        var message = event.data;
         if (message.type == "user") {
           this.setState({username: message.username, userProfile: message.userProfile});
           return;
@@ -117,9 +117,10 @@ class Comp extends React.Component {
   }
 
   render() {
-    var user;
-    var login;
-    var logout;
+    var user = null;
+    var login = null;
+    var logout = null;
+
     if(this.state.username == null) {
       login =
         <li style={this.itemStyle}>
@@ -130,10 +131,12 @@ class Comp extends React.Component {
       user = <li style={this.itemStyle}>
         <User contextHeight={this.props.menuHeight} username={this.state.username} profile={this.state.userProfile}/>
       </li>;
-      logout = <li style={this.itemStyle}>
-        <Logout contextHeight={this.props.menuHeight}/>
-      </li>;
+      logout =
+        <li style={this.itemStyle}>
+          <Logout contextHeight={this.props.menuHeight}/>
+        </li>;
     }
+
     return (
       <nav className='recolnatGlobalNavigationMenu' style={this.barStyle}>
         <ul style={this.itemListStyle}>

@@ -44,7 +44,12 @@ class User extends React.Component {
   }
 
   goToProfile() {
-    window.parent.postMessage({type: "redirect", url: this.props.userProfile}, "*");
+    //console.log("Sending post message to parent to redirect to " + this.props.profile);
+    window.parent.postMessage({type: "redirect", action: "profile", url: this.props.profile}, "*");
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({});
   }
 
   render() {
