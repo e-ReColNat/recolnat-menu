@@ -54,8 +54,13 @@ frame.postMessage({type: "user", username: "MyUserName", userProfile: "http://fo
 
 Finalement, les pages accueillant la barre de menu doivent être capables de récéptionner les messages POST de demande de redirection de la part du menu (source: http://wp5test.recolnat.org). Ces messages se présentent sous la forme
 ```Javascript
-{ type: "redirect", url: "URL"}
+{ type: "redirect", action: "action", url: "URL"}
 ```
+Au choix, l'application parent peut utiliser l'URL ou l'action pour déterminer les actions à entreprendre lors de la récéption d'un message. Les actions actuellement renvoyées sont:
+- ``login``, redirection vers le CAS pour connecter l'utilisateur
+- ``profile``, redirection vers la page profil de l'utilisateur dans l'application actuelle
+- ``logout``, redirection vers le CAS pour déconnecter l'utilisateur, ou suppression du cookie associé au CAS.
+
 ### Exemple
 
 Un exemple d'intégration *in vivo* est également accessible à l'URL : [http://wp5test.recolnat.org/menu-test/](http://wp5test.recolnat.org/menu-test/). Révéler la source de la page permet de voir l'``iframe``.
