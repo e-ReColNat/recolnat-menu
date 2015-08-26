@@ -23,13 +23,14 @@ Les effets d'intégration visuelle supplémentaires (ombrage, transparance gén�
 L'intégration avec le CAS se fait par l'application qui gère les sessions indépendemment du menu mais doit lui indiquer un ensemble de paramètres permettant de mettre à jour l'affichage du menu. Le bouton "Me Connecter" redirige le ticket de connexion vers l'application contenant le menu.
 
 ### Instructions
-L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la barre doit apparaitre :
 
+L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la barre doit apparaitre :
 ```HTML
 <iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5test.recolnat.org/menu/"></iframe>
 <script type="text/javascript">
 </script>
 ```
+Cet <iframe> doit toujours être contenu dans le document parent (et pas dans un autre iframe au niveau du parent par exemple). Ceci pour éviter les problèmes liés aux politiques de sécurité cross-domaine.
 
 La classe CSS recolnat-menu correspondant dans les feuilles de style :
 

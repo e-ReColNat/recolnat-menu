@@ -44,7 +44,7 @@ class User extends React.Component {
   }
 
   goToProfile() {
-    top.window.postMessage({type: "redirect", url: this.props.userProfile}, top.window.location.href);
+    window.parent.postMessage({type: "redirect", url: this.props.userProfile}, "*");
   }
 
   render() {
