@@ -30,7 +30,7 @@ L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la ba
 <script type="text/javascript">
 </script>
 ```
-Cet <iframe> doit toujours être contenu dans le document parent (et pas dans un autre iframe au niveau du parent par exemple). Ceci pour éviter les problèmes liés aux politiques de sécurité cross-domaine.
+Cet ```<iframe>``` doit toujours être contenu dans le document parent (et pas dans un autre iframe au niveau du parent par exemple). Ceci pour éviter les problèmes liés aux politiques de sécurité cross-domaine.
 
 La classe CSS recolnat-menu correspondant dans les feuilles de style :
 
