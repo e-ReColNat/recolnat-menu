@@ -77,19 +77,7 @@ class Comp extends React.Component {
     window.addEventListener("message", self.receiveMessage.bind(self));
   }
 
-  //checkLoginState() {
-  //  var cookie = cookie.load("CASTGC");
-  //  console.log(cookie);
-  //  if(!cookie) {
-  //    return;
-  //  }
-  //  // Call login service for user information
-  //
-  //}
-
   receiveMessage(event) {
-    //console.log("receiving message " + JSON.stringify(event) +  " from " + event.origin);
-    //console.log("auth=" + JSON.stringify(this.authorizedDomains));
     // Test page code chunk
     if(event.origin.indexOf("localhost:") > -1) {
       console.log("Authorizing message from localhost");
@@ -99,6 +87,12 @@ class Comp extends React.Component {
     }
     if(event.origin == "http://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
+      var message = event.data;
+      this.setState({username: message.username, userProfile: message.userProfile});
+      return;
+    }
+    if(event.origin == "http://wp5prod.recolnat.org") {
+      console.log("Authorizing message from prod server");
       var message = event.data;
       this.setState({username: message.username, userProfile: message.userProfile});
       return;

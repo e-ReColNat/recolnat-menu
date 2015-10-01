@@ -36,12 +36,22 @@ gulp.task('route-root-prod', function() {
   .pipe(gulp.dest('./src'));
 });
 
-gulp.task('deploy', ['build-prod'], function() {
+gulp.task('deploy-test', ['build-prod'], function() {
   gulp.src('dist/*')
     .pipe(sftp({
       host: 'wp5test.recolnat.org',
       remotePath: '/home/cnamuser/www/menu',
       user: 'cnamuser',
+      pass: ''
+    }));
+});
+
+gulp.task('deploy-prod', ['build-prod'], function() {
+  gulp.src('dist/*')
+    .pipe(sftp({
+      host: 'wp5prod.recolnat.org',
+      remotePath: '/home/cnam/www/menu',
+      user: 'cnam',
       pass: ''
     }));
 });
