@@ -78,31 +78,34 @@ class Comp extends React.Component {
   }
 
   receiveMessage(event) {
+    var parser = document.createElement('a');
+    parser.href = event.origin;
     // Test page code chunk
     if(event.origin.indexOf("localhost:") > -1) {
       console.log("Authorizing message from localhost");
-      var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfile});
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
     if(event.origin == "http://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
-      var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfile});
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
     if(event.origin == "http://wp5prod.recolnat.org") {
       console.log("Authorizing message from prod server");
-      var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfile});
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
+      return;
+    }
+    if(parser.hostname.indexOf('recolnat.org') > 1) {
+      console.log("Authorizing message from domain recolnat.org");
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
     for(var i = 0; i < this.authorizedDomains.length; ++i) {
       var domain = this.authorizedDomains[i].url;
       if (event.origin.indexOf(domain) > -1) {
-        var message = event.data;
-        if (message.type == "user") {
-          this.setState({username: message.username, userProfile: message.userProfile});
+        if (event.data.type == "user") {
+          this.setState({username: event.data.username, userProfile: event.data.userProfile});
           return;
         }
       }
@@ -158,4 +161,4 @@ class Comp extends React.Component {
   }
 }
 
-module.exports = Comp;
+export default Comp;

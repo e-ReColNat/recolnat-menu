@@ -1,1 +1,1 @@
-module.exports = "/menu/";
+export default "/menu/";

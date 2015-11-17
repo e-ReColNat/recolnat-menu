@@ -28,4 +28,4 @@ const Comp = React.createClass({
   }
 });
 
-module.exports = Comp;
+export default Comp;

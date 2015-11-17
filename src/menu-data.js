@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = {
+export default {
   projectUrl: 'http://recolnat.org/',
   height: 35,
   modules: [
