@@ -80,18 +80,19 @@ class Comp extends React.Component {
   receiveMessage(event) {
     var parser = document.createElement('a');
     parser.href = event.origin;
+    console.log('menu frame received message from ' + event.origin);
     // Test page code chunk
     if(event.origin.indexOf("localhost:") > -1) {
       console.log("Authorizing message from localhost");
       this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
-    if(event.origin == "http://wp5test.recolnat.org") {
+    if(event.origin == "https://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
       this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
-    if(event.origin == "http://wp5prod.recolnat.org") {
+    if(event.origin == "https://wp5prod.recolnat.org") {
       console.log("Authorizing message from prod server");
       this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
