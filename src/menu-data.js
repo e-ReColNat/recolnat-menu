@@ -34,7 +34,7 @@ export default {
       'label': 'Laboratoire',
       'symbol': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABaElEQVQ4T8XUTSiEQRzHcRsHJHGRcnTci6MTchEHJy8XVy5Oe0R5SblQcpOXIoRcHMRFa9Ne9qpQoiRKUhIpL+H70zw1TZPm0ZanPs0zM/v/95+ZnSdR4H/KGH72TLUyNo9bZ66afi/2Ep6gJsa2UYdLZ76TfhKjzrj6x9hyE6qyHJbQhmZ8WcGxE86ZCt5pi7GOGSfhAP0LpHBt5rwVNjI5hBZTlarNoh1XJlAVNmAW53j9LeGO+dEY7RmqkEEaGtMTK+E0AR2IKqvn/QWDWLMSBi9Z+3CKYXRhHEf4OT0rYfApK6GCR9Bt2hNPwlgVhiQMPpTQCvOeMO9L/r9D2eREdVvKcY8KfGACU9bfJngPFfiIfROspg8H2PhLwhWCahFdeOXQfi1At0iPrl7wofTz41JMWhUu876IQyth8KFo77TcJ3yiBHfQ/VY/qjA4oQKKUINCvOEG9gdWH91VPFir0GslerD7DS5UoxUhU24iAAAAAElFTkSuQmCC',
       'domain': 'wp5test.recolnat.org',
-      'url': 'https://wp5test.recolnat.org/demo'
+      'url': 'https://wp5test.recolnat.org/lab/vm'
     }
   ]
 };
