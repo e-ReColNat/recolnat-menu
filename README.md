@@ -26,7 +26,7 @@ L'intégration avec le CAS se fait par l'application qui gère les sessions ind�
 
 L'intégrateur doit ajouter le contenu suivant dans les pages HTML où où la barre doit apparaitre :
 ```HTML
-<iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="http://wp5prod.recolnat.org/menu/"></iframe>
+<iframe id="recolnatMenu" class="recolnat-menu" seamless="seamless" scrolling="no" src="https://wp5prod.recolnat.org/menu/"></iframe>
 <script type="text/javascript">
 </script>
 ```
@@ -37,11 +37,25 @@ La classe CSS recolnat-menu correspondant dans les feuilles de style :
 ```CSS
  .recolnat-menu {
     border: medium none;
-    height: 35px;
+    border-bottom: 1px solid gray;
+    height: 58px;
     overflow: hidden;
     position: fixed;
     width: 100%;
 }
+```
+Si la page hôte est vouée à être "responsive", il faut également rajouter la règle :
+```CSS
+  @media screen and (max-width: 1000px) {
+    .recolnat-menu {
+      border: none;
+      border-bottom: 1px solid gray;
+      height: 290px;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+    }
+  }
 ```
 
 Le menu doit être informé de l'utilisateur connecté s'il y en a un, et de l'URL pour accéder à son profil. Cette action doit être faite après le chargement complete de la page en envoyant un message POST vers l'iframe contenant le menu. Ce message doit être de type "user" et doit contenir un username correspondant au nom affiché choisi par l'utilisateur et un userProfile qui est un URL vers la page profil utilisateur.

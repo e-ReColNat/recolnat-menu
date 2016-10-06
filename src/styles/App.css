@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'ikaros_sansregular';
+  src: url('Ikaros-Regular.otf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+}
+
+div.content {
+  color: white;
+  margin: 100px 0;
+  text-align: center;
+}
+
+nav.menu {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+ul.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+}
+
+ul.menu li {
+  font-family: ikaros_sansregular;
+  white-space: nowrap;
+}
+
+ul.menu li a {
+  color: black;
+  line-height: 36px;
+  text-decoration: none;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+ul.menu li.logo img {
+  height: 36px;
+}
+
+ul.menu li.link {
+  font-size: 110%;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+ul.menu li.link a {
+  color: black;
+  transition: color 0.5s ease;
+}
+
+ul.menu li.link a:hover {
+  color: #B2D145;
+  transition: color 0.2s ease;
+}
+
+li:nth-child(8) {
+  padding-left: 10px
+}
+
+ul.menu li.button a {
+  background-color: #DD6754;
+  color: white;
+  font-family: 'Merriweather', serif;
+}
+
+/* Petites feuilles */
+
+ul.menu li.link a + .menu-icon {
+  color: #B2D145;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+ul.menu li.link a:hover + .menu-icon {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Ajustement vertical à cause de ce putain de logo de merde */
+
+ul.menu li.logo {
+  vertical-align: top;
+}
+
+ul.menu li.link, ul.menu li.button {
+  padding-top: 12px;
+  vertical-align: middle;
+}
+
+/* >= 1000px */
+
+ul.menu li {
+  display: table-cell;
+}
+
+li.logo + li.link, li.link + li.button {
+  padding-left: 50px;
+}
+
+ul.menu li.link+li.link:before {
+  content: " | ";
+  padding: 0 25px 0 10px;
+}
+
+/* <= 1000px */
+
+@media screen and (max-width: 1000px) {
+  ul.menu {
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  ul.menu li .menu-icon {
+    display: none;
+  }
+
+  ul.menu li {
+    display: block;
+    text-align: center;
+  }
+
+  ul.menu li.link+li.link:before {
+    content: "";
+    padding: 0;
+  }
+
+  ul.menu li.link a {
+    display: block;
+  }
+
+  ul.menu li.link {
+    background-color: white;
+    transition: background-color 0.5s ease;
+  }
+
+  ul.menu li.link a:hover {
+    color: black;
+  }
+
+  ul.menu li.link:hover {
+    background-color: #B2D145;
+    transition: background-color 0.2s ease;
+  }
+
+  ul.menu li:nth-child(2) {
+    border-top: 1px solid lightgray;
+    margin-top: 10px;
+  }
+
+  ul.menu li:nth-child(6) {
+    margin-bottom: 10px;
+  }
+
+  ul.menu li.link {
+    border-bottom: 1px solid lightgray;
+    padding: 0;
+  }
+
+  ul.menu li a {
+    line-height: 25px;
+  }
+
+  li.logo + li.link, li.link + li.button {
+    padding-left: 0;
+  }
+}
