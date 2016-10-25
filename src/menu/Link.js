@@ -30,7 +30,7 @@ class Comp extends React.Component {
 
   render() {
     return <span className='link-wrapper'>
-      <a href={this.props.url}>{this.props.label}</a>
+      <a href={this.props.url}  target="_top">{this.props.label}</a>
       <i className='fa fa-leaf menu-icon' />
       </span>;
   }
