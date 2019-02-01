@@ -1,13 +1,14 @@
 'use strict';
 
-module.exports = {
+export default {
   projectUrl: 'http://recolnat.org/',
   height: 35,
   modules: [
     {
       'label': 'Présentation',
       'symbol': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wYWCgAfVRFxmgAAAYZJREFUOMut1U9LVWEQBvDfOd4oJM8+vKs2rrsbW0QYLkO3rQJdiNgH6DME7iUIbtt00/Xfop2oYItq71ISDQoXGima2maMy/W8516ygQOHd555mJl35nkz1y3HXQzhGR7hXvj2sYl5bOMnLtqDsw6yO5jEU/RhCV+wG/46GhjHOVbxFicliamhifd4rLuNoBUxNSWZNfEaA3q3gYhpBsffns1EZimyUbxK+IrIdCa4FFipKLMf36P5ExXlr6DI4zb7sJ4A/8IbfMBWArMWHEO1GI2lBPB+jM0nfMZpRT+Xg8tHDCdADzCHHzjAVAXhw+Cyg8EK4GDM4SmmK3B17OQ9jMYZLuPranmsU93NrY79PHaz8R8IG9jIY9HHu1SR9UA4hoU8VOM8hrNMOL7hd/wfJMieBMd2++q1SlbveUjUHr6GqrzrwBVYvFq9rE0c5mI0XuIwzm9HcN6W9TGO4tYLzOIWXnTK2JV8tUrKT5W52Clf3QR2OSGwYymBzf7hCdjAQuoJ+APa1Fygv8WIlgAAAABJRU5ErkJggg==',
-      'url': 'http://www.recolnat.org/presentation',
+//      'url': 'http://www.recolnat.org/presentation',
+      'url': 'https://www.recolnat.org/le-programme',
       'domain': 'www.recolnat.org'
     },
     {
@@ -30,11 +31,10 @@ module.exports = {
       'callback': "callback%3Fclient_name%3DCasClient"
     },
     {
-      'label': 'Laboratoire',
+      'label': 'Labo',
       'symbol': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABaElEQVQ4T8XUTSiEQRzHcRsHJHGRcnTci6MTchEHJy8XVy5Oe0R5SblQcpOXIoRcHMRFa9Ne9qpQoiRKUhIpL+H70zw1TZPm0ZanPs0zM/v/95+ZnSdR4H/KGH72TLUyNo9bZ66afi/2Ep6gJsa2UYdLZ76TfhKjzrj6x9hyE6qyHJbQhmZ8WcGxE86ZCt5pi7GOGSfhAP0LpHBt5rwVNjI5hBZTlarNoh1XJlAVNmAW53j9LeGO+dEY7RmqkEEaGtMTK+E0AR2IKqvn/QWDWLMSBi9Z+3CKYXRhHEf4OT0rYfApK6GCR9Bt2hNPwlgVhiQMPpTQCvOeMO9L/r9D2eREdVvKcY8KfGACU9bfJngPFfiIfROspg8H2PhLwhWCahFdeOXQfi1At0iPrl7wofTz41JMWhUu876IQyth8KFo77TcJ3yiBHfQ/VY/qjA4oQKKUINCvOEG9gdWH91VPFir0GslerD7DS5UoxUhU24iAAAAAElFTkSuQmCC',
-      'hover': 'Laboratoire scientifique collaboratif - A venir',
-      'domain': 'N/A',
-      'url': '#'
+      'domain': 'lab.recolnat.org',
+      'url': 'https://lab.recolnat.org'
     }
   ]
 };

@@ -2,12 +2,7 @@
  * Created by dmitri on 30/06/15.
  */
 import React from 'react';
-import rsg from 'recolnat-style-guide';
-import url from 'urlparser';
-const grey1 = rsg.colours.grisfonce;
-const grey2 = rsg.colours.grisclair1;
-const grey3 = rsg.colours.grisclair2;
-const vert = rsg.colours.vert;
+//import url from 'urlparser';
 
 class User extends React.Component {
   constructor(props) {
@@ -18,50 +13,31 @@ class User extends React.Component {
     this.label = 'Me connecter';
 
     this.linkStyle = {
-      border: this.border + 'px solid ' + grey2,
-      WebkitBorderRadius: 5,
-      borderRadius: 5,
-      color: grey1,
-      cursor: 'default',
-      display: 'block',
-      fontFamily: '"Trebuchet MS", sans-serif',
-      fontSize: 13,
-      letterSpacing: '2',
-      paddingLeft: 30,
-      paddingRight: 5,
-      textAlign: 'center',
-      textDecoration: 'none',
-      textTransform: 'uppercase',
-      verticalAlign: 'middle'
+      cursor: 'pointer'
     };
   }
 
-  componentWillMount() {
-    this.linkStyle.background = 'rgba(255, 255, 255, 0.5) url(' + this.symbol + ') no-repeat 5px';
-    this.linkStyle.height = this.props.contextHeight;
-    this.linkStyle.height = this.props.contextHeight - 2 * this.border - 6;
-    this.linkStyle.lineHeight = this.linkStyle.height + 'px';
+  goToProfile(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Sending post message to parent to redirect to " + this.props.profile);
+    window.parent.postMessage({type: "redirect", action: "profile", url: this.props.profile}, "*");
   }
 
-  goToProfile() {
-    window.parent.postMessage({type: "redirect", url: this.props.userProfile}, "*");
+  logout(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("Sending post message to parent to redirect to " + 'https://cas.recolnat.org/logout');
+    window.parent.postMessage({type: "redirect", action: "logout", url: 'https://cas.recolnat.org/logout'}, "*");
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({});
   }
 
   render() {
-    let s = {};
-    Object.assign(s, this.linkStyle, {});
-
-    var self = this;
-
-      return(
-        <span className='recolnatGlobalNavigationMenuItemText'
-              style={s}
-              onClick={this.props.goToProfile.bind(this)}
-          >Bienvenue, {this.props.username}
-        </span>
-      );
-
+    return <a style={this.linkStyle} onClick={this.goToProfile.bind(this)} target="_top" onContextMenu={this.logout.bind(this)}>Bienvenue, {this.props.username}</a>;
   }
 }
 
-module.exports = User;
+export default User;

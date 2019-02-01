@@ -5,54 +5,22 @@ import cookie from "react-cookie";
 import Link from './Link';
 import User from './User';
 import Login from './Login';
-import Logout from './Logout';
+//import Logout from './Logout';
 import request from "superagent";
 import _ from 'lodash';
-import rsg from 'recolnat-style-guide';
-
-const grey1 = rsg.colours.grisfonce;
-const grey2 = rsg.colours.grisclair1;
-const grey3 = rsg.colours.grisclair2;
+import conf from '../menu-data';
 
 import '../../node_modules/normalize.css/normalize.css';
-import recolnatLogoUrl from '../../node_modules/recolnat-style-guide/images/recolnat_B_H40.png';
+import '../styles/Ikaros-Light.otf';
+import '../styles/Ikaros-Regular.otf';
+import '../styles/App.css';
+
+import recolnatLogoUrl from '../images/logo-recolnat.png';
 
 class Comp extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.barStyle = {
-      backgroundColor: grey3,
-      fontFamily: '"Trebuchet MS", sans-serif',
-      position: 'fixed',
-      top: 0,
-      width: '100%'
-    };
-
-    this.itemListStyle = {
-      display: 'table',
-      margin: '0 auto',
-      padding: 0,
-      textAlign: 'center'
-    };
-
-    this.itemStyle = {
-      display: 'table-cell',
-      overflow: 'hidden',
-      paddingLeft: 7,
-      paddingRight: 7,
-      textAlign: 'center',
-      verticalAlign: 'middle'
-    };
-
-    this.logoStyle = {
-      marginTop: 2
-    };
-
-    this.logoLinkStyle = {
-      cursor: 'default'
-    };
 
     // Extract list of trusted domains from props
     this.authorizedDomains = this.props.recolnatModules.map(function(mod) {
@@ -66,72 +34,79 @@ class Comp extends React.Component {
     this.state = {username: null, userProfile: null};
   }
 
-  componentWillMount() {
-    this.logoStyle.height = this.props.menuHeight - 5;
-    this.logoLinkStyle.height = this.props.menuHeight - 5;
-    //this.checkLoginState();
-    window.addEventListener("message", this.receiveMessage.bind(this), false);
+  componentDidMount() {
+    var self = this;
+    window.addEventListener("message", self.receiveMessage.bind(self));
   }
 
-  //checkLoginState() {
-  //  var cookie = cookie.load("CASTGC");
-  //  console.log(cookie);
-  //  if(!cookie) {
-  //    return;
-  //  }
-  //  // Call login service for user information
-  //
-  //}
-
   receiveMessage(event) {
-    console.log("receiving message " + event +  " from " + event.origin);
+    var parser = document.createElement('a');
+    parser.href = event.origin;
+    console.log('menu frame received message from ' + event.origin);
     // Test page code chunk
-    if(event.origin == "http://wp5test.recolnat.org") {
+    if(event.origin.indexOf("localhost:") > -1) {
+      console.log("Authorizing message from localhost");
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
+      return;
+    }
+    if(event.origin == "https://wp5test.recolnat.org") {
       console.log("Authorizing message from test server");
-      var message = event.data;
-      this.setState({username: message.username, userProfile: message.userProfileUrl});
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
+      return;
+    }
+    if(event.origin == "https://wp5prod.recolnat.org") {
+      console.log("Authorizing message from prod server");
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
+      return;
+    }
+    if(parser.hostname.indexOf('recolnat.org') > 1) {
+      console.log("Authorizing message from domain recolnat.org");
+      this.setState({username: event.data.username, userProfile: event.data.userProfile});
       return;
     }
     for(var i = 0; i < this.authorizedDomains.length; ++i) {
-      var domain = this.props.authorizedDomains[i].url;
-      if (domain.indexOf(event.origin) > -1) {
-        var message = JSON.parse(event.data);
-        if (message.type == "user") {
-          this.setState({username: message.username, userProfile: message.userProfileUrl});
+      var domain = this.authorizedDomains[i].url;
+      if (event.origin.indexOf(domain) > -1) {
+        if (event.data.type == "user") {
+          this.setState({username: event.data.username, userProfile: event.data.userProfile});
           return;
         }
       }
     }
+    console.log("Origin " + event.origin + " is not authorized as POST message source for the menu bar");
   }
 
   render() {
-    var user;
-    var login;
-    var logout;
+    var user = null;
+    var login = null;
+    var logout = null;
+
     if(this.state.username == null) {
       login =
-        <li style={this.itemStyle}>
+        <li className='button'>
           <Login contextHeight={this.props.menuHeight} authorizedDomains={this.authorizedDomains}/>
         </li>;
     }
     else {
-      user = <li style={this.itemStyle}>
+      user = <li className='button'>
         <User contextHeight={this.props.menuHeight} username={this.state.username} profile={this.state.userProfile}/>
       </li>;
-      logout = <li style={this.itemStyle}>
-        <Logout contextHeight={this.props.menuHeight}/>
-      </li>;
+      //logout =
+      //  <li style={this.itemStyle}>
+      //    <Logout contextHeight={this.props.menuHeight}/>
+      //  </li>;
     }
+
     return (
-      <nav className='recolnatGlobalNavigationMenu' style={this.barStyle}>
-        <ul style={this.itemListStyle}>
-          <li style={this.itemStyle} >
-            <a href={this.props.projectUrl} target="_top" style={this.logoLinkStyle}>
+      <nav className='menu'>
+        <ul className='menu'>
+          <li className='logo' >
+            <a href={conf.projectUrl} target='_top'>
               <img src={recolnatLogoUrl} style={this.logoStyle}/>
-            </a>
+              </a>
           </li>
           {_.map(this.props.recolnatModules, (rm) => {
-            return <li key={rm.label} style={this.itemStyle}>
+            return <li key={rm.label} className='link'>
               <Link
                 url={rm.url}
                 label={rm.label}
@@ -149,4 +124,4 @@ class Comp extends React.Component {
   }
 }
 
-module.exports = Comp;
+export default Comp;

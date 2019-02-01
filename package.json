@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp build-dev",
     "prod": "gulp build-prod",
-    "deploy": "gulp deploy"
+    "deploy-test": "gulp deploy-test",
+    "deploy-prod": "gulp deploy-prod"
   },
   "author": "Thomas « Amleth » Bottini",
   "license": "ISC",
