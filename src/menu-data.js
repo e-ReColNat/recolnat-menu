@@ -20,8 +20,8 @@ export default {
     {
       'label': 'Transcrire',
       'symbol': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABRklEQVQ4T6WUu0oDQRSGTWsnpBMVLFS0Fry0IoovYWOjoAHLlGlS5BW08tJo8hKxFUQrL5WNhSDa2fn9yzmyWd3JzmTgY/Y23/4ze3ZqY+ltiqFN6MCza2qJPsn6cAl7sAJPcqUIXXbM+CvYgnNYhcdY4bQl+zbBu81Q0gsljRFKdgOHUIcD2ACXtjierCrMy3qWSmu3b1JN9xTWqgj/k/m3lFRrOSEZvAwTuuyIh7tuyfU7HJ/AumS6HhJWkWXTdFlImCQrE85wQ0UbmuafZL4MxSmPJCsmdFmDG9clH6A0WTGhr9lIsnzCBU7uYAl+dw57q0pjaLJiQtXQPLyBqj7bOWhRMk84zsEX6P/UNqSdQ/1cTLJ8wmVOziyhri/CLXzCQNH6oFCvstmFNrya9IN+G7RFZb9TTJNwE2bhHh4sWYxj4Nkfwk1N/brq2I4AAAAASUVORK5CYII=',
-      'url': 'http://herbonautes.mnhn.fr',
-      'domain': 'herbonautes.mnhn.fr'
+      'url': 'http://lesherbonautes.mnhn.fr',
+      'domain': 'lesherbonautes.mnhn.fr'
     },
     {
       'label': 'Contrôler',
